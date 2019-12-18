@@ -16,6 +16,59 @@ var variavelProfile
 
 require('./polyfill');
 
+//fazendo testes com url
+var url = window.location.href; 
+var res = url.split('@');
+variavelProfile = res[1]
+// alert("VRP é "+variavelProfile)
+
+var teste1 = leafletOptions.services[0].path
+var teste2 = leafletOptions.services[0].path1
+var aux
+if(variavelProfile == 'driving'){
+  aux = teste1
+} if (variavelProfile == 'foot') {
+  aux = teste2
+}
+var aux2
+var items = document.getElementById('myselect');
+// var teste = document.getElementById('profile');
+
+
+var res2 
+var newUrl 
+items.addEventListener('change', function(){
+    console.log(variavelProfile)
+    if(this.value == 'Car'){
+      aux = teste1
+      var url2 = window.location.href
+       res2 = url2.split('@');
+       newUrl = res2[0]
+      window.location.href = newUrl + '@driving' 
+    } if (this.value == 'Foot') {
+      aux = teste2
+      var url2 = window.location.href
+      res2 = url2.split('@');
+       newUrl = res2[0]
+      window.location.href = newUrl + '@foot' 
+    }
+    
+  });
+
+// teste.addEventListener('click', function(){
+//   alert(variavelProfile)
+//   if(aux == teste1){
+//   window.location.href = window.location.href + '?driving'   
+// } if (aux == teste2){    
+//   console.log("BBBBBBBB")
+//   window.location.href = window.location.href + '?foot'  
+// }
+//   });
+
+
+
+
+
 var parsedOptions = links.parse(window.location.search.slice(1));
 var mergedOptions = L.extend(leafletOptions.defaultState, parsedOptions);
 var local = localization.get(mergedOptions.language);
@@ -147,26 +200,6 @@ var plan = new ReversablePlan([], {
 L.extend(L.Routing, itineraryBuilder);
 
 // add marker labels
-
-var teste1 = leafletOptions.services[0].path
-var teste2 = leafletOptions.services[0].path1
-var aux = teste1
-
-console.log(teste1, teste2)
-var items = document.getElementById('myselect');
-items.addEventListener('change', function(){
-    variavelProfile = this.value
-    console.log(variavelProfile)
-    if(variavelProfile == 'Car'){
-      aux = teste1
-      alert(aux)
-    } if (variavelProfile == 'Foot') {
-      aux = teste2
-      alert(aux)
-    }
-    
-  });
-
 
 var controlOptions = {
   plan: plan,
