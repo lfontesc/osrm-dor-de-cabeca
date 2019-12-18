@@ -32,6 +32,7 @@ module.exports = {
     label: 'Car (fastest)',
     path: 'http://localhost:5000/route/v1',
     path1: 'http://localhost:5001/route/v1',
+    path2: 'http://localhost:5002/route/v1',
   }],
   layer: [{
     'Mapbox Streets': streets,

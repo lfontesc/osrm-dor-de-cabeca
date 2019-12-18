@@ -24,12 +24,16 @@ variavelProfile = res[1]
 
 var teste1 = leafletOptions.services[0].path
 var teste2 = leafletOptions.services[0].path1
+var teste3 = leafletOptions.services[0].path2
 var aux
 if(variavelProfile == 'driving'){
   aux = teste1
 } if (variavelProfile == 'foot') {
   aux = teste2
+} if (variavelProfile == 'bicycle'){
+  aux = teste3
 }
+
 var aux2
 var items = document.getElementById('myselect');
 // var teste = document.getElementById('profile');
@@ -51,6 +55,12 @@ items.addEventListener('change', function(){
       res2 = url2.split('@');
        newUrl = res2[0]
       window.location.href = newUrl + '@foot' 
+    } if (this.value == 'Bike') {
+      aux = teste3
+      var url2 = window.location.href
+      res2 = url2.split('@');
+       newUrl = res2[0]
+      window.location.href = newUrl + '@bicycle' 
     }
     
   });
